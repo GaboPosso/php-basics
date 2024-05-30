@@ -19,7 +19,23 @@
     <input type="radio" name="gender_rdo" value="F">
     <label>Femenino&nbsp;</label>
     <br><br>
-    <input type="button" value="send_btn" value="GET send">
+    <input type="hidden" name="send_hdn" value="get">
+    <input id="send-get" type="button" name="send_btn" value="GET send" >
+<script>
+  const getDataValidation = () => {
+    let check = true,
+      d = document;
 
+    if(!d.data_validate_get_frm.name_txt.value){
+      alert("The Name field is required!");
+      d.data_validate_get_frm.name_txt.focus();
+      check = false;
+    }        
+  }
+  window.onload = function() {
+      document.getElementById("send-get").onclick = getDataValidation;
+    }
+
+</script>
 </body>
 </html>
