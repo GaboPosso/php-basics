@@ -6,6 +6,14 @@
   <title>Data Validation</title>
 </head>
 <body>
+  <?php
+  error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING );
+  
+  // $_GET["error"] = null;
+   if($_GET["error"]== "yes"){
+    echo "<span style=\"color: #F00; font-size: 2em\">Verifica tus datos</span>";
+  }
+  ?>
   <hgroup><h1>Data Form GET</h1></hgroup>
   <form name="data_validate_get_frm" action="data-validate.php" method="get" enctype="application/x-www-form-urlencoded">
     <label>Enter your name:</label>
