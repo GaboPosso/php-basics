@@ -1,0 +1,1 @@
+This doc works as a test for php exercises
