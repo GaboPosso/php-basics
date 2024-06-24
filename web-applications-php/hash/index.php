@@ -8,20 +8,22 @@
 </head>
 
 <body>
+  <h1>GaboPosso PHP</h1>
   <h1>MD5 cracker</h1>
 
   <p>This application tasked an MD5 hash of four digits pin and check all 10,000 possible four digits PINs to determine the PIN.</p>
   <pre>
 <?php
+// Set up error message
 $goodtext = "Not found";
-
+//start by checking if md5 input is defines or null
 if (isset($_GET['md5'])) {
   $time_pre = microtime(true);
   $md5 = $_GET['md5'];
 
   $txt = "0123456789";
   $show = 15;
-
+// Nested loops to check possible combinations 
   for ($i = 0; $i < strlen($txt); $i++) {
     $num1 = $txt[$i];
 
@@ -34,10 +36,10 @@ if (isset($_GET['md5'])) {
         for ($l = 0; $l < strlen($txt); $l++) {
           $num4 = $txt[$l];
 
-          
+//combine together
           $try = $num1 . $num2 . $num3 . $num4;
 
-          
+// hash result          
           $check = hash('md5', $try);
           if ($check == $md5) {
             $goodtext = $try;
@@ -60,10 +62,13 @@ if (isset($_GET['md5'])) {
   print "\n";
 }
 ?>
+
+
+
 </pre>
 
   <p>PIN: <?= htmlentities($goodtext); ?></p>
-  <form action="get">
+  <form action="" method="get">
     <input type="text" name="md5" size="40"/>
     <input type="submit" value="Crack MD5"/>
   </form>
