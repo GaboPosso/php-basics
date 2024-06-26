@@ -9,18 +9,35 @@
   <h1>Welcome to my guessing game</h1>
   <p>
     <?php
-      if (!isset($_GET['guess'])) {
+     $oldguess = isset($_POST['guess']) ? $_POST['guess'] : '';
+      $message = false;  
+
+
+      if (!isset($_POST['guess'])) {
         echo("Missing guess parameter");
-      } else if (strlen($_GET['guess']) < 1) {
+      } else if (strlen($_POST['guess']) < 1) {
         echo("Your guess is too short");
-      } else if ($_GET['guess'] > 100) {
+      } else if ($_POST['guess'] > 100) {
         echo("Your guess is too high");
-      } else if ($_GET['guess'] < 100) {
+      } else if ($_POST['guess'] < 100) {
         echo("Your guess is too low");
       } else {
         echo("Congratulations! You guessed the number!");
       }
+
+      if ($message !== false) {
+        echo("<p>$message</p>\n");
+      }
+
+      
    ?>
+
+   <form method="post">
+    <p><label for="guess">Input Guess</label>
+    <input type="text" name="guess" id="guess" size="40" value="<?= htmlentities($oldguess)?>">
+    <input type="submit">
+    </p>
+   </form>
   </p>
 </body>
 </html>
